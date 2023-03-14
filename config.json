@@ -1,0 +1,14 @@
+{
+    "server_port": 5000,
+    "webpush_exchange": "dummy_exchange",
+    "publisher_queue": "dummy_queue",
+    "publisher_routing": "dummy.queue",
+    "rabbitmq_url": "amqp://develop:infini1234@10.20.30.25:5672",
+    "status_update_queue": "status_update",
+    "status_update_binding": "status.update",
+    "mysql_host": "127.0.0.1:8888",
+    "mysql_user": "root",
+    "mysql_pass": "root",
+    "mysql_db": "webpush"
+
+}

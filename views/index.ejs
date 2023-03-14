@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" name="site" id="name" value="<%= JSON.stringify(site) %>">
+<h1>Welcome to site <%= site.name %>   </h1>
+<script>
+    var browser = navigator.appCodeName;
+      let site = JSON.parse(document.getElementById('name').value);
+                if(site.id == 1){
+                    var url ="http://localhost:5000/subscribe";
+                    var worker_name = "worker.js";
+                } else {
+                    var worker_name = "worker.js";
+                    var url ="http://localhost:5000/subscribe";
+                }
+                       // console.log(site.id)
+    const publicVapidKey=site.publicVapidKey;
+    if (window.Notification) {
+        Notification.requestPermission(() => {
+            if (Notification.permission === 'granted') {
+                getSubscriptionObject()
+                    .then(subscribe)
+            }
+        });
+    }
+    function getSubscriptionObject() {
+                console.log(worker_name);
+        return navigator.serviceWorker.register('./'+worker_name)
+            .then((worker) => {
+            return worker.pushManager
+                .subscribe({
+                    userVisibleOnly:true,
+                    applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+                });
+    });
+    }
+    function subscribe(subscription) {
+        return fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({"browser":browser,"subscription":subscription,"site":site}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    }
+    //t8Array to pass into the subscribe call, which you can do like so:
+
+    function urlBase64ToUint8Array(base64String) {
+        const padding = '='.repeat((4 - base64String.length % 4) % 4);
+        const base64 = (base64String + padding)
+            .replace(/-/g, '+')
+            .replace(/_/g, '/');
+
+        const rawData = window.atob(base64);
+        const outputArray = new Uint8Array(rawData.length);
+
+        for (let i = 0; i < rawData.length; ++i) {
+            outputArray[i] = rawData.charCodeAt(i);
+        }
+        return outputArray;
+    }
+</script>
+</body>
+</html>

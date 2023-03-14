@@ -1,0 +1,37 @@
+# Webpush
+Using this module we can send push notifications to  browser.
+
+### Installation
+
+This requires [Node.js](https://nodejs.org/) v10+ to run.
+
+Clone the repo
+Update config.json wrt values
+Create new  database in mysql and use the sql file from repo
+Update the sites  table with  website,private ,public  key details(useing server.js you can generate) 
+ 
+```sh
+$ cd webpush
+$ npm install 
+$ node  server.js
+$ node server1.js
+$ node consumer.js
+$ node consumer_status_update.js
+```
+Open the http://localhost:5000/site1
+opem http://localhost:5001/site2
+
+https://www.getpostman.com/collections/4f935b95c2f440e5c2be
+Download the api collection from postman and start sending campagin
+
+Workflow.
+
+Admin selects the user for the campagin.
+campaign will be submitted to the queue.
+consumer will pick and start sending the push notofications to the user and update status in db
+Once user clicks on the notification ,  same thing wil be submitted  in the queue.  
+worker will pickup from queue and update the status in the db.
+
+By using postman apis we can  send the campaign and check the status
+
+
