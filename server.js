@@ -28,8 +28,8 @@ const knex = require('knex')({
     }
 });
 
-var pk  = fs.readFileSync('/etc/letsencrypt/live/server.gilace.ir/privkey.pem', 'utf8');
-var cr = fs.readFileSync('/etc/letsencrypt/live/server.gilace.ir/fullchain.pem', 'utf8');
+var pk  = fs.readFileSync('/etc/letsencrypt/live/gilace.ir/privkey.pem', 'utf8');
+var cr = fs.readFileSync('/etc/letsencrypt/live/gilace.ir/fullchain.pem', 'utf8');
 var credentials = {key: pk, cert: cr};
 
  //const vapidKeys = webpush.generateVAPIDKeys();
