@@ -27,8 +27,8 @@ const knex = require('knex')({
 });
 
 
- const vapidKeys = webpush.generateVAPIDKeys();
- console.log(vapidKeys);
+ //const vapidKeys = webpush.generateVAPIDKeys();
+ //console.log(vapidKeys);
 
 app.get("/site1", async function (req, res) {
     let site = await db.getSiteDetails(1);
