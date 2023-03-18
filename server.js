@@ -16,6 +16,10 @@ app.use(bodyParser.json());
 app.use(cors({
     origin: 'http://gilace.ir:8443'
 }));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 const port = config.server_port;
 const knex = require('knex')({
     client: 'mysql',
