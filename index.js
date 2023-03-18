@@ -7,9 +7,9 @@ const knex = require('knex')({
     client: 'mysql',
     // debug: ['ComQueryPacket'],
     connection: {
-        host: '127.0.0.1:8888',
-        user: 'root',
-        password: 'root',
+        host: '127.0.0.1',
+        user: 'web',
+        password: '123456',
         database: 'webpush'
     }
 });
