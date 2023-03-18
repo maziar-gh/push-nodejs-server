@@ -14,7 +14,7 @@ const db = require("./library/db");
 app.use(express.static('public'))
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://localhost:5001'
+    origin: 'http://gilace.ir:8443'
 }));
 const port = config.server_port;
 const knex = require('knex')({
