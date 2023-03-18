@@ -20,9 +20,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(express.static('public'))
 app.use(bodyParser.json());
-app.use(cors({
-    origin: 'http://localhost:5001'
-}));
+app.use(cors());
 // const vapidKeys = webpush.generateVAPIDKeys();
 // console.log(vapidKeys);
 

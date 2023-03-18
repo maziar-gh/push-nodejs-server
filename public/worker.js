@@ -3,7 +3,7 @@ self.addEventListener('push', event => {
     console.log('This push event has data: ', event.data.text());
 
 
-    let url ='http://localhost:5000/update_status?camp='+data.camp_id+"&user_id="+data.user_id+"&status=d";
+    let url ='https://gilace.ir:8443/update_status?camp='+data.camp_id+"&user_id="+data.user_id+"&status=d";
     //const analyticsPromise = pushReceivedTracking();
     const pushInfoPromise = fetch(url)
         .then(function(response) {
@@ -40,7 +40,7 @@ self.addEventListener('notificationclick', function(event) {
     console.log('This click event has data: ', JSON.stringify(data));
 
 
-    let url ='http://localhost:5000/update_status?camp='+data.camp_id+"&user_id="+data.user_id+"&status=c";
+    let url ='https://gilace.ir:8443/update_status?camp='+data.camp_id+"&user_id="+data.user_id+"&status=c";
     //const analyticsPromise = pushReceivedTracking();
     const pushInfoPromise = fetch(url)
         .then(function(response) {

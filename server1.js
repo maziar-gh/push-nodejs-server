@@ -24,9 +24,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(express.static('public'))
 app.use(bodyParser.json());
-app.use(cors({
-    origin: 'http://localhost'
-}));
+app.use(cors());
 
 // app.get("/site1", async function(req, res) {
 //    let site= await knex('sites')
