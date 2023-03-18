@@ -1,3 +1,4 @@
+var https = require('https');
 const webpush = require('web-push');
 var moment = require('moment');
 let date = moment();
@@ -26,6 +27,9 @@ const knex = require('knex')({
     }
 });
 
+var pk  = fs.readFileSync('/etc/letsencrypt/live/server.gilace.ir/privkey.pem', 'utf8');
+var cr = fs.readFileSync('/etc/letsencrypt/live/server.gilace.ir/fullchain.pem', 'utf8');
+var credentials = {key: pk, cert: cr};
 
  //const vapidKeys = webpush.generateVAPIDKeys();
  //console.log(vapidKeys);
@@ -141,5 +145,11 @@ app.post('/subscribe', async (req, res) => {
     //}, 500);
 });
 
+var httpsServer = https.createServer(credentials, app);
+
 app.listen(port);
 console.log("Server running " + port)
+
+httpsServer.listen(8443, () => {
+    console.log("httpsServer is runing at port 8443");
+  });
