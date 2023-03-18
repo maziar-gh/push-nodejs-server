@@ -13,9 +13,7 @@ const config = require("./config.json");
 const db = require("./library/db");
 app.use(express.static('public'))
 app.use(bodyParser.json());
-app.use(cors({
-    origin: 'https://gilace.ir:8443'
-}));
+app.use(cors());
 const port = config.server_port;
 const knex = require('knex')({
     client: 'mysql',
